@@ -31,7 +31,7 @@ urlpatterns = [
     path('hospitals/', include('hospitals.urls')),
     path('signup/', users_views.signup, name='signup'),
     path('notifications/', users_views.notifications, name='notifications'),
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
     path('verify-user/', users_views.verify_user, name='verify_user'),
     path('login/', users_views.CustomLoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', users_views.custom_logout, name='logout'),
