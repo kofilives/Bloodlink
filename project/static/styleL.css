@@ -1,0 +1,35 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+*{
+    font-family:'Poppins', sans-serif;
+    margin: 0.5%;
+    
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    
+   
+}
+
+.form-box {
+    border: 1px solid #8B8B8B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3%;
+   
+}
+#box form{
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="submit"] {
+   
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,69 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+*{
+    font-family:'Poppins', sans-serif;
+    padding: 10px;
+    
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.navbar ul li h4 a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.naV {
+    
+    border-top-left-radius: 50px;
+    background-color:#f3f9ff;
+    background: linear-gradient(to right, #f3f9ff, white );
+}
+
+.navBar {
+    background-color: white;
+    border: 1px solid whitesmoke;
+    border-radius: 100px/100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    margin: 2%;
+    
+}
+.navBar a{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+.tt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: linear-gradient(to right, #f3f9ff, white );
+    
+}
+
+#donateBtn button{
+    padding: 2%;
+    border: none;
+    background-color: white;
+    font-weight: bolder;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.secPage {
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(to right, #ff4336, #960b02);
+    color: white;
+    border-top-right-radius: 100px;
+    
+    padding: 5;
+}
+

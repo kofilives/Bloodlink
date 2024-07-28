@@ -1,0 +1,158 @@
+{% extends "hospitals/hospitalDashboard.html" %}
+{% load static %}
+
+
+
+<body style="font-family:'Poppins', sans-serif;">
+    {% block content %}
+    <div class="container bg-white mt-5 mb-5 col-lg-8 rounded">
+        <div class="text-white bg-danger d-flex justify-content-around align-items-center p-3">
+            <div class="col-lg-8">
+                <h1><strong>BLOOD DONOR FORM</strong></h1>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <h1><span style="color: yellow;">{{user.first_name}}</span> {{user.last_name}}</h1>
+                <img src="{% static 'images/logo.png' %}" alt="" style="width: 50%;height: 90%;">
+            </div>
+        </div>
+
+        <div class="container">
+        
+            <form action="{% url 'update_user_info' %}" method="post" class="mt-5 was-validated">
+                {% csrf_token %}
+                <div class="bg-warning mb-2">
+                    <h5><b>PATIENT INFORMATION</b></h5>
+                </div>
+                <div class="mb-3 col-lg-12 col-sm-12">
+                    <label for="national_id">GHANA CARD ID*</label>
+                    <input list="national_id" name="national_id" id="national_id" class="form-control" required>
+                    <datalist id="national_id">
+                        <option value={{appointments.national_id}}>
+                      </datalist>
+                    <div class="valid-feedback">Valid.</div>
+                </div>
+
+                <div class="d-flex justify-content-between row col-sm-12">
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="first_name">Firstname*</label>
+                        <input type="text" name="first_name" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                    </div>
+
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="last_name">Lastname*</label>
+                        <input type="text" name="last_name" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between row col-sm-12">
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="gender" class="form-label">Gender*</label>
+                        <select name="gender" class="form-select" id="select1" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="age" class="mb-2">Age*</label>
+                        <input type="number" name="age" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between row col-sm-12">
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="date_of_birth" class="mb-2">Date of birth*</label>
+                        <input type="date" name="date_of_birth" class="form-control" required>
+                        <div class="valid-feedback">Valid.</div>
+                    </div>
+
+                    <div class="mb-3 col-lg-5 col-sm-12">
+                        <label for="address" class="mb-2">Address*</label>
+                        <input type="text" name="address" class="form-control">
+                    </div>
+                </div>
+
+                <div class="mb-3 col-lg-12 col-sm-12">
+                    <label for="nationality" class="mb-2">Nationality*</label>
+                    <input type="text" name="nationality" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                </div>
+
+                <div class="mb-3 col-sm-12">
+                    <label for="email" class="form-label">Email*</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3 col-sm-12">
+                    <label for="phone_number" class="form-label">Number*</label>
+                    <input type="tel" name="phone_number" class="form-control" required>
+                </div>
+
+                <div class="bg-warning  mb-2 mt-2">
+                    <h5><b>MEDICAL HISTORY</b></h5>
+                </div>
+
+                <div class="d-flex justify-content-between row col-sm-12">
+                    <div class="mb-3 col-lg-5">
+                        <label for="date" class="form-label">Date*</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3 col-lg-5">
+                        <label for="time" class="form-label">Time* </label>
+                        <input type="time" name="time" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-lg-12 col-sm-12">
+                    <label for="blood_group" class="mb-2">Blood Group(If known)*</label>
+                    <input type="text" name="blood_group" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <p>Have you donated Blood before?</p>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio1" name="has_donated_before" value="True"
+                            checked>
+                        <label class="form-check-label" for="radio1"> Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="radio2" name="has_donated_before"
+                            value="False">
+                        <label class="form-check-label" for="radio2">No</label>
+                    </div>
+                </div>
+
+                <div class="bg-warning  mb-2 mt-2">
+                    <h5><b>EMERGENCY CONTACT INFORMATION</b></h5>
+                </div>
+
+                <div class="mb-3 col-sm-12">
+                    <label for="emergency_contact_name" class="form-label">Fullname*</label>
+                    <input type="text" name="emergency_contact_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3 col-sm-12">
+                    <label for="emergency_contact_phone" class="form-label">Phone Number*</label>
+                    <input type="tel" name="emergency_contact_phone" class="form-control" required>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="myCheck" name="terms_agreed" required>
+                    <label class="form-check-label" for="myCheck">By submitting this form, I agree to the terms and
+                        conditions of blood donation.</label>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-3 col-lg-4">Submit</button>
+            </form>
+        </div>
+        {% endblock %}
+</body>
+
+

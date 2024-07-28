@@ -1,0 +1,11 @@
+{% extends "project/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Information Updated</h4>
+        
+        <hr>
+        <a href="{% url 'hospital_dashboard' %}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

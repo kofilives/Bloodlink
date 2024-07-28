@@ -1,0 +1,11 @@
+{% extends "project/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Account Already Activated</h4>
+        <p>Your account has already been activated. You can now log in.</p>
+        <hr>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login Now</a>
+    </div>
+</div>
+{% endblock %}

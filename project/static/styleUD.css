@@ -1,0 +1,232 @@
+
+.container-fluid {
+    display: grid;
+    grid-template-columns: 14rem auto 14rem;
+    gap: 1.8rem;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+.dark-theme-variables{
+    --clr-color-background: #181a1e;
+    --clr-white: #202528;
+    --clr-light: rgba(0,0,0,0.4);
+    --clr-dark: #edeffd;
+    --clr-dark-varient: #677483;
+    --box-shadow: 0 2rem 3rem var(var(--clr-light))
+}
+
+* {
+    list-style: none;
+    appearance: none;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    overflow-x: hidden;
+    background-color: #fafafa;
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+
+
+aside .sidebar a {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: all .1s ease-in;
+    height: 5.2rem;
+}
+
+aside .sidebar a span {
+    transition: all .1s ease-in;
+}
+
+aside .sidebar a:hover {
+    color: purple;
+}
+
+
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+    transition: .4s ease;
+}
+aside .top #close{
+    display: none;
+}
+
+main {
+    width: auto;
+    background-color: transparent;
+    overflow-y: scroll;
+    height: 100vh;
+    
+}
+
+main::-webkit-scrollbar{
+    width: 0px;
+    -ms-overflow-style: none;
+}
+
+
+
+main .insights svg circle {
+    fill: none;
+    stroke: steelblue;
+    transform: rotate(270, 80, 80);
+    stroke-width: 5;
+}
+
+main .insights .sales svg circle {
+    stroke-dashoffset: 10;
+    stroke-dasharray: 150;
+}
+
+/* main .insights .number {
+    position: absolute;
+    top: 5rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+} */
+
+.right{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.right .top button{
+    display: none;
+}
+
+.right::-webkit-scrollbar{
+    width: 0px;
+    -ms-overflow-style: none;
+}
+.right .theme-toggler {
+    cursor: pointer;
+   
+}
+
+.right .theme-toggler span{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right .theme-toggler span.active{
+    background-color: rgb(170, 27, 226);
+    color: white;
+}
+
+@media screen and (max-width: 1200px) {
+    aside .sidebar h3{
+        display: none;
+    }
+    aside .top button {
+    display: none;
+}
+    .container-fluid{
+        width: 94%;
+        grid-template-columns: 7rem auto 14rem;
+    }
+
+    main .insights{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media screen and (max-width:768px) {
+    
+    .container-fluid{
+        width: 100%;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    aside{
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        background-color: wheat;
+        display: none;
+        left: -100px;
+        animation: menuAni 1s forwards;
+    }
+
+    @keyframes menuAni {
+        to{
+            left: 0;
+        }
+        
+    }
+    aside .sidebar h3{
+        display: inline;
+    }
+    aside .sidebar a{
+        width: 100%;
+    }
+    aside .top #close{
+        display: inline;
+    }
+    aside .top div#close span{
+        display: inline;
+       
+    }
+
+    .right .top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.8rem;
+        background: white;
+        width: 100%;
+        height: 4.6rem;
+        z-index: 2;
+        box-shadow: 0 1rem whitesmoke;
+        margin: 0;
+
+    }
+    main .insights .row{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: 1.6rem;
+        padding: 40px;
+    }
+    .right .profile{
+        position: absolute;
+        left: 70%;
+    }
+    .right .top .theme-toggler{
+        position: absolute;
+        left: 40%;
+
+    }
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+    }
+
+
+    
+
+    
+}

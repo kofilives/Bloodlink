@@ -1,0 +1,60 @@
+{% extends "users/userdashboard.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor Notifications</title>
+    
+</head>
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Notifications <i class="fa-regular fa-envelope fa-2xl"></i></h1>
+        <p class="text-muted">You have unread notifications</p>
+
+    
+
+        <!-- Manage Appointments -->
+        <div class="card mb-3">
+            <div class="card-header">
+                Manage Appointments
+            </div>
+            <div class="card-body">
+                <a href="#" class="btn btn-secondary">View All Appointments</a>
+                <a href="#" class="btn btn-secondary">Reschedule Appointment</a>
+                <a href="#" class="btn btn-secondary">Cancel Appointment</a>
+            </div>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="card mb-3">
+            <div class="card-header">
+                Contact Us
+            </div>
+            <div class="card-body">
+                <p>If you have any questions or need further assistance, please contact our support team at <a href="mailto:support@blooddonorwebsite.org">support@blooddonorwebsite.org</a> or call (123) 456-7890.</p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+   
+    <script>
+        function savePreferences() {
+            let preferences = {
+                emailNotifications: document.getElementById('emailNotifications').checked,
+                smsNotifications: document.getElementById('smsNotifications').checked,
+                pushNotifications: document.getElementById('pushNotifications').checked,
+                donationOpportunities: document.getElementById('donationOpportunities').checked,
+                appointmentReminders: document.getElementById('appointmentReminders').checked,
+                importantAnnouncements: document.getElementById('importantAnnouncements').checked,
+            };
+
+            console.log('Preferences saved:', preferences);
+            alert('Your preferences have been saved.');
+        }
+    </script>
+</body>
+</html>

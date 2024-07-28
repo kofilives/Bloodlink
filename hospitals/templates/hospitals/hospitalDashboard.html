@@ -1,0 +1,436 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        @import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #sidebar-wrapper {
+            width: 250px;
+            transition: transform 3s ease;
+        }
+
+        #sidebar-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #page-content-wrapper {
+            width: 100%;
+            padding: 20px;
+            background-color: whitesmoke;
+        }
+
+
+
+        .main {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        .main::-webkit-scrollbar {
+            width: 0px;
+            -ms-overflow-style: none;
+        }
+
+        .card {
+            text-align: center;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-item {
+            transition: background-color 0.3s;
+        }
+
+        .tt:hover {
+            background-color: whitesmoke;
+            color: green;
+            border-radius: 5px;
+            padding: 5px;
+            margin-left: 1rem;
+            transition: .4s ease;
+        }
+
+
+       
+
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 40
+        }
+
+        @media screen and (max-width:768px) {
+            #sidebar-wrapper {
+                display: none;
+            }
+
+            h1 {
+                font-size: medium;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white m-5 " id="sidebar-wrapper">
+            <div class="sidebar-heading" style="margin-bottom: 6rem;">
+            
+                <div>
+                    <h3><strong>{{user.fullname}}</strong></h3>
+                </div>
+            </div>
+            <div class="d-flex flex-column gap-5 mt-5 sidebar">
+                <div class="d-flex gap-3 tt ">
+                    <span class="material-symbols-outlined" style="color: green;">
+                        dashboard
+                    </span>
+                    <a href="{% url 'hospital_dashboard' %}"
+                        class="list-group-item list-group-item-action h4">Dashboard</a>
+                </div>
+                <div class="d-flex gap-3 tt ">
+                    <span class="material-symbols-outlined" style="color: green;">
+                        patient_list
+                    </span>
+                    <a href="{% url 'patientinfo' %}" class="list-group-item list-group-item-action h4">Patients</a>
+                </div>
+                <div class="d-flex gap-3 tt ">
+                    <span class="material-symbols-outlined" style="color: green;">
+                        book_online
+                    </span>
+                    <a href="{% url 'appointment_list' %}"
+                        class="list-group-item list-group-item-action h4">Appointments</a>
+                </div>
+                <div class="d-flex gap-3 tt ">
+                    <span class="material-symbols-outlined" style="color: green;">
+                        clinical_notes
+                    </span>
+                    <a href="#" class="list-group-item list-group-item-action h4">Doctors</a>
+                </div>
+
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg  gap-3 m-3 ">
+                <div>
+                    <button class="btn" id="menu-toggle"><i class="fa-solid fa-bars fa-2xl"
+                            style="color: #499343;"></i></button>
+                </div>
+                <div class="input-group search-area d-lg-inline-flex d-none w-25">
+                    <input type="text" class="form-control" placeholder="Search here...">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <a href=""><i class="fa-brands fa-searchengin"></i></a>
+
+                        </span>
+                    </div>
+
+                </div>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            
+
+
+            <div class="container-fluid main">
+
+                {% block content %}
+
+                <h1 class="mt-4">Welcome to the Hospital Dashboard</h1>
+
+                <div class="row mt-5">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100 p-5 shadow">
+                            <div class="card-body d-flex justify-content-around">
+                                <div>
+                                    <h2><strong>29,345</strong></h2>
+                                    <p class="card-text">Total Patients</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-regular fa-heart fa-2xl" style="color: #14e177;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100 p-5 shadow">
+                            <div class="card-body d-flex justify-content-around">
+                                <div>
+                                    <h2><strong>80</strong></h2>
+                                    <p class="card-text">Appointments</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-regular fa-calendar-check fa-2xl" style="color: #14e177;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100 p-5 shadow">
+                            <div class="card-body d-flex justify-content-around">
+                                <div>
+                                    <h2><strong>445</strong></h2>
+                                    <p class="card-text">Total Doctors</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-stethoscope fa-2xl" style="color: #14e177;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100 p-5 shadow">
+                            <div class="card-body d-flex justify-content-around">
+                                <div>
+                                    <h2><strong>2,245</strong></h2>
+                                    <p class="card-text">Total Donors</p>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-solid fa-droplet fa-2xl" style="color: #14e177;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="container mt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0">Patient Overview</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="card-title">Patient Information</h6>
+                                            <p>Name: John Doe</p>
+                                            <p>Age: 45</p>
+                                            <p>Gender: Male</p>
+                                            <p>Condition: Hypertension</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <canvas id="patientHealthChart"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-md-6">
+                                            <canvas id="patientVisitsChart"></canvas>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <canvas id="patientMedicationChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-4">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0"> Appointment Schedule</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="patientName">Patient Name</label>
+                                            <input type="text" class="form-control" id="patientName"
+                                                placeholder="Enter patient name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appointmentDate">Date</label>
+                                            <input type="date" class="form-control" id="appointmentDate">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appointmentTime">Time</label>
+                                            <input type="time" class="form-control" id="appointmentTime">
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-success btn-block">Schedule
+                                                Appointment</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+            
+
+
+
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('menu-toggle');
+            const sidebar = document.getElementById('sidebar-wrapper');
+
+            toggleButton.addEventListener('click', () => {
+                if (!sidebar.classList.contains('hidden')) {
+                    sidebar.classList.add('hidden');
+                    setTimeout(() => {
+                        sidebar.style.display = 'none';
+                    }, 500);
+                } else {
+                    sidebar.style.display = 'block';
+                    setTimeout(() => {
+                        sidebar.classList.remove('hidden');
+                    }, 10); // Slight delay to ensure transition is applied
+                }
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+            sidebarItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Remove active class from all items
+                    sidebarItems.forEach(item => item.classList.remove('active'));
+
+                    // Add active class to the clicked item
+                    item.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <script>
+        // Data for the charts
+        const healthData = {
+            labels: ['Blood Pressure', 'Heart Rate', 'Cholesterol'],
+            datasets: [{
+                label: 'Health Metrics',
+                data: [120, 80, 200],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                borderWidth: 1
+            }]
+        };
+
+        const visitsData = {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Visits',
+                data: [3, 2, 5, 4, 3],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const medicationData = {
+            labels: ['Medication A', 'Medication B', 'Medication C'],
+            datasets: [{
+                label: 'Medication Dosage',
+                data: [20, 15, 10],
+                backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 159, 64, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        };
+
+        // Initialize charts
+        const healthCtx = document.getElementById('patientHealthChart').getContext('2d');
+        const visitsCtx = document.getElementById('patientVisitsChart').getContext('2d');
+        const medicationCtx = document.getElementById('patientMedicationChart').getContext('2d');
+
+        new Chart(healthCtx, {
+            type: 'bar',
+            data: healthData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(visitsCtx, {
+            type: 'line',
+            data: visitsData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(medicationCtx, {
+            type: 'pie',
+            data: medicationData,
+            options: {}
+        });
+    </script>
+
+
+</body>
+
+</html>

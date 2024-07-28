@@ -1,0 +1,21 @@
+@import url("https://use.fontawesome.com/releases/v6.5.1/css/all.css");
+*{
+    font-family:'Poppins', sans-serif;
+    margin: 0.5%;
+    
+}
+
+
+.userProfile{
+    display: flex;
+    flex-direction: row;
+}
+
+body input {
+    border: none;
+}
+
+
+
+
+

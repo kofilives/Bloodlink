@@ -1,0 +1,40 @@
+{% extends "hospitals/hospitalDashboard.html" %}
+{% load static %}
+
+
+<body>
+    {% block content %}
+
+    <div class="container">
+
+        <h2 class="mb-5">Appointment List</h2>
+        <table class="table table-bordered table-hover  table-2xl">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col">#</th>
+                    <th>National ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <th scope="row"></th>
+                    <td>{{ appointment.national_id }}</td>
+                    <td>{{ appointment.first_name }}</td>
+                    <td>{{ appointment.last_name }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    {% endblock %}
+</body>

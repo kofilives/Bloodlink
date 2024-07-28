@@ -1,0 +1,138 @@
+{% extends "users/userdashboard.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <link rel="stylesheet" href="{% static 'styleP.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet" />
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="d-flex justify-content-around bg-info rounded col-lg-3">
+        <h3>PROFILE INFORMATION </h3>
+        <span class="material-symbols-outlined">
+            medical_information
+        </span>
+    </div>
+    <div class="row">
+        <div class="container  p-3 m-2 d-flex flex-column justify-content-between">
+            <div class="d-flex justify-content-center mb-5">
+                <div class="card col-lg-12">
+                    <div class="card-header rounded-5">
+                        <img src="{{user.profile.image.url}}" alt="" style="width: 100%;">
+                    </div>
+                    <div class="card-body d-flex justify-content-around">
+                        <div class="d-flex align-items-center">
+                            <h1>{{ user.fullname }}</h1>
+                        </div>
+
+                        <div>
+                            <p> <b>{{ user.email }}</b></p>
+                        <p>Phone Number : <b>{{ user.number }}</b></p>
+                        <p>Country : <b>{{ user.country }}</b></p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <form action="" method="post" enctype="multipart/form-data" class="col">
+
+                {% csrf_token %}
+                <fieldset class="form-group"> 
+                    <legend class="border-bottom mb-3 bg-warning col-lg-4 d-flex justify-content-around rounded">
+                        Personal Information
+                        <span class="material-symbols-outlined mt-1">
+                            info
+                        </span>
+                    </legend>
+
+                    <div class="col-lg-10 d-flex flex-column justify-content-center gap-3">
+                        {{ u_form | crispy }}
+                        {{ p_form | crispy }}
+                    </div>
+
+                </fieldset>
+                <button class="btn btn-outline-danger mt-3">Update Profile</button>
+            </form>
+
+
+
+
+
+            <div class="donor_history container col-lg-12 mt-5">
+                <div class="d-flex">
+                    <div class="bg-success col-lg-3 rounded mb-3 d-flex justify-content-around">
+                        <h3>DONOR HISTORY</h3>
+                        <span class="material-symbols-outlined">
+                            browse_activity
+                        </span>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="table col-lg-12">
+                    <table class="table table-bordered">
+                        <thead class="table-success">
+                            <tr>
+                                <th>DONATION ID</th>
+                                <th>BLOOD TYPE</th>
+                                <th>QUANTITY</th>
+                                <th>DATE</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1dd497</td>
+                            </tr>
+
+                            <tr>
+                                <td>#232363</td>
+                            </tr>
+
+                            <tr>
+                                <td>#232363</td>
+                            </tr>
+
+                            <tr>
+                                <td>#232363</td>
+                            </tr>
+
+                            <tr>
+                                <td>#232363</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endblock %}
+
+</body>
+
+</html>

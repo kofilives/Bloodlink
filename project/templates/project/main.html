@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BloodLink</title>
+
+  <link rel="stylesheet" href="{%  static 'style.css'  %}" />
+  <link rel="icon" href="{% static 'images/celciuslogo.png' %}" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet" />
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+
+<body>
+  <nav class="container-fluid navbar navbar-expand-sm navbar-expand-lg naV justify-content-center">
+    <div class="navBar container-fluid">
+      <a class="navbar-brand" href="">
+        <img src="{% static 'images/celciuslogo.png' %}" alt="" class="rounded-pill img-fluid">
+      </a>
+      <span class="navbar-text ">
+        <h4 style="font-weight: bolder;">BloodLink</h4>
+      </span>
+      <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon btn"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class=" nav justify-content-end">
+          <li class="nav-item">
+            <h4><a class="nav-link" href="" style="text-decoration: none;">Home</a></h4>
+          </li>
+          <li class="nav-item">
+            <h4><a class="nav-link" href="" style="text-decoration: none;">About</a>
+            </h4>
+          </li>
+          <li class="nav-item">
+            <h4><a class="nav-link" href="" style="text-decoration: none;">Blog</a>
+            </h4>
+          </li>
+          <li class="nav-item">
+            <h4><a class="nav-link" href="{% url 'signup' %}" style="text-decoration: none;">Sign Up</a>
+            </h4>
+          </li>
+          <li class="nav-item">
+            <h4><a class="nav-link" href="{% url 'login' %}">Login</a></h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+  </nav>
+
+  <div class="tt container-fluid">
+    <div class="row d-flex">
+      <div class="col-sm-12 col-lg-6">
+        <div>
+          <h1 style="font-weight: bolder;">Donate Blood, save a life!</h1>
+        </div>
+
+        <div>
+          <p>
+            Blood is a precious gift of life that anyone can give to a patient in need of a blood transfusion therapy
+          </p>
+        </div>
+
+        <div id="donateBtn">
+          <button type="button">Donate Now! <i class="fa-solid fa-right-to-bracket fa-2xl"
+              style="color: #d71431;"></i></button>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-lg-6">
+        <img class="img-fluid" src="{% static 'images/BLOOD DONATION LOGO - Made with PosterMyWall.jpg' %}" alt=""
+          style="border: 1px solid red; border-top-left-radius: 50%;border-top-right-radius: 50%;border-bottom-right-radius: 50%;" />
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="secPage container-fluid">
+    <div class="row">
+      <div style="width: 50%;" class="col">
+        <h1 style="font-weight: bolder;">We are helping people from 10 years</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab expedita beatae dignissimos laborum dolores ut
+          quia
+          vel, reiciendis inventore? Quisquam adipisci non deleniti, optio placeat ut dolorum reprehenderit vero
+          mollitia.
+        </p>
+      </div>
+
+      <div class="col-sm-12" id="donateBtn"
+        style="display: flex; align-items: center;width: 50%; justify-content: center;">
+        <button type="button" style="color: black;">Donate Now!<i class="fa-solid fa-right-to-bracket fa-2xl"
+            style="color: #d71431;"></i></button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="container-fluid">
+    <h1 style="font-weight: bolder;">Donation Process</h1>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero possimus itaque autem pariatur
+      hic quod minima,
+      similique eaque. Molestiae laborum facilis quaerat accusamus. In, itaque architecto similique repudiandae
+      assumenda nulla.</p>
+
+    <div style="display: flex;flex-wrap: wrap;">
+      <div class="row">
+        <div class="col-xs-12 col-md-3">
+          <div
+            style="border: none;background-color: #6c9dad;color: blue;border-radius: 25%;width: 30%;display: flex;justify-content: center;">
+            <h3>1</h3>
+          </div>
+          <div>
+            <h3 style="font-weight: bolder;">Registration</h3>
+          </div>
+          <div>
+            <p>You will complete a simple registration form with your personal details. Remember to bring your picture
+              ID for easy identification.</p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div
+            style="border: none;background-color: #f7d1a6;color: rgb(48, 231, 207);border-radius: 25%;width: 30%;display: flex;justify-content: center;">
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3 style="font-weight: bolder;">Screening</h3>
+          </div>
+          <div>
+            <p>Our nurses will take you through a brief medical check so that you or the person who receives your blood
+              are not negatively affected after donation.</p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div
+            style="border: none;background-color: #baf7a2;color: rgb(73, 197, 48);border-radius: 25%;width: 30%;display: flex;justify-content: center;">
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3 style="font-weight: bolder;">Donation</h3>
+          </div>
+          <div>
+            <p>Once you are found fit, you will be directed to our
+              comfortable donor bed to give blood. This usually takes between 10-15 minutes.</p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div
+            style="border: none;background-color: #d820a1;color: rgb(52, 6, 56);border-radius: 25%;width: 30%;display: flex;justify-content: center;">
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3 style="font-weight: bolder;">Refreshment</h3>
+          </div>
+          <div>
+            <p>When you are done giving the blood, our staff will take care of you to make sure you are safe to go back
+              to normal life.
+              You will also receive a slight refreshment as you rest</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="container-fluid d-flex" style="background: linear-gradient(to left, #232363,#5252a0) ; color: white;">
+    <div class="row">
+      <div class="col">
+        <h3>About</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A molestiae placeat vitae minus incidunt? Ab vero
+          atque aperiam consequuntur. Id et soluta autem illum eaque tenetur esse vitae harum. Mollitia!</p>
+
+      </div>
+
+      <div class="col">
+        <h3>Links</h3>
+        <div style="display: flex;flex-direction: column;">
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Blog</a>
+          <a href="">Contact</a>
+        </div>
+
+      </div>
+
+
+
+
+      <div class="col" style="display: flex;flex-direction: column;">
+        <div>
+          <h3>Contact</h3>
+
+          <a href="mailto: kofiankomah733@gmail.com">kofiankomah733@gmail.com</a>
+          <a href="mailto: kofiankomah733@gmail.com">kofiankomah733@gmail.com</a>
+        </div>
+
+        <div style="display: flex;flex-direction: column;">
+          <h3>Phone</h3>
+
+          <a href="tel:+233 531174471">0531174471</a>
+          <a href="tel:+233 531174471">0531174471</a>
+        </div>
+
+      </div>
+      <div class="col">
+        <h3>Subscribe Now</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptatem nemo repudiandae alias officiis
+          deleniti natus tenetur nihil sequi ipsam, id soluta necessitatibus consectetur? Commodi magni quae velit eius
+          vitae.</p>
+
+
+        <input type="email" name="" id="" placeholder="email" style="color: black;  padding: auto;
+                border: none;
+                background-color: white;
+                font-weight: bolder;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+                border-bottom-right-radius: 50px;">
+        <button class="border-0 bg-none"><i class="fa-solid fa-right-to-bracket fa-2xl"
+            style="color: #1dd497;"></i></button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+  <div class="elfsight-app-4c494f42-86ee-4a82-928b-d4e79a92e915" data-elfsight-app-lazy></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+{% extends "users/userdashboard.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body style="font-family:'Poppins', sans-serif;">
+    {% block content %}
+    <div class="container-fluid col-lg-10  d-flex flex-column align-items-center rounded  mb-5" style="border: 1px solid #8B8B8B;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="mt-5">
+            <div class="d-flex justify-content-center">
+                <img src="{% static 'images/celciuslogo.png' %}" alt="">
+            </div>
+            <div>
+                <h1>Appointment Form</h1>
+                <p class="d-flex align-items-center justify-content-center">Donate blood, Save lives!</p>
+            </div>
+        </div>
+
+        <form action="{% url 'appointment' %}" method="post" class="mt-5 was-validated">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between col-sm-12">
+                <div class="mb-3 col-lg-5 col-sm-12">
+                    <label for="id_first_name">Firstname*</label>
+                    <input type="text" name="first_name" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                </div>
+                <div class="mb-3 col-lg-5 col-sm-12">
+                    <label for="id_last_name">Lastname*</label>
+                    <input type="text" name="last_name" class="form-control" required>
+                    <div class="valid-feedback">Valid.</div>
+                </div>
+            </div>
+            <div class="mb-3 col-lg-12 col-sm-12">
+                <label for="id_national_id">NATIONAL ID*</label>
+                <input type="text" name="national_id" class="form-control" placeholder="GHA-XXXXXXXXX-X" required>
+                <div class="valid-feedback">Valid.</div>
+            </div>
+            <div class="mb-3 col-lg-12 col-sm-12">
+                <label for="id_gender" class="form-label">Gender*</label>
+                <select name="gender" class="form-select" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="mb-3 col-sm-12">
+                <label for="id_email" class="form-label">Email*</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3 col-sm-12">
+                <label for="id_phone_number" class="form-label">Number*</label>
+                <input type="tel" name="phone_number" class="form-control" required>
+            </div>
+            <div class="d-flex justify-content-between col-lg-12">
+                <div class="mb-3 col-lg-5">
+                    <label for="id_date" class="form-label">Date*</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+                <div class="mb-3 col-lg-5">
+                    <label for="id_time" class="form-label">Time*</label>
+                    <input type="time" name="time" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3 col-lg-12 col-sm-12">
+                <label for="id_hospitals" class="form-label">Hospitals*</label>
+                <select name="hospitals" class="form-select" required>
+                    <option value="Male">KNUST Hospital</option>
+                    <option value="BOMSO">BOMSO Hospital</option>
+                    <option value="Komfo">Komfo Anokye Hopsital</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <p>Have you donated Blood before?</p>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="id_has_donated_before_1" name="has_donated_before"
+                        value="True" checked>
+                    <label class="form-check-label" for="id_has_donated_before_1">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="id_has_donated_before_2" name="has_donated_before"
+                        value="False">
+                    <label class="form-check-label" for="id_has_donated_before_2">No</label>
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="id_terms_agreed" name="terms_agreed" required>
+                <label class="form-check-label" for="id_terms_agreed">By submitting this form, I agree to the terms and
+                    conditions of blood donation.</label>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback"></div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mb-3">Submit</button>
+        </form>
+
+
+    </div>
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
