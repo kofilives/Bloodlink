@@ -98,8 +98,19 @@ WSGI_APPLICATION = 'BloodLink.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.config(default=config('DATABASE_URL'))
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'BloodLink',
+        'USER': 'postgres',
+        'PASSWORD': 'kofi1234',
+        'HOST': 'localhost',
+        'PORT': '5433'
+    }
 }
 
 
@@ -146,7 +157,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional directories to collect static files from (if any)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'project/static'),
 ]
 
 # Default primary key field type
