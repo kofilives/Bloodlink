@@ -98,20 +98,20 @@ WSGI_APPLICATION = 'BloodLink.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': dj_database_url.config(default=config('DATABASE_URL'))
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BloodLink',
-        'USER': 'postgres',
-        'PASSWORD': 'kofi1234',
-        'HOST': 'localhost',
-        'PORT': '5433'
-    }
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'BloodLink',
+#         'USER': 'postgres',
+#         'PASSWORD': 'kofi1234',
+#         'HOST': 'localhost',
+#         'PORT': '5433'
+#     }
+# }
 
 
 # Password validation
