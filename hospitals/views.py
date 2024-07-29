@@ -167,34 +167,30 @@ def appointment_list(request):
 @login_required
 def update_user_info(request):
     if request.method == 'POST':
-        national_id = request.POST.get('national_id')
-        
-        try:
-            appointment = get_object_or_404(Appointment, national_id=national_id)
-            user = appointment.user
-        except Appointment.DoesNotExist:
-            messages.error(request, 'No appointment found with the provided national ID.')
-            return redirect('update_user_info')  # Redirect back to the form or any error page
+        email = request.POST.get('email')
 
-        # Update user information based on the provided form data
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('last_name')
-        user.gender = request.POST.get('gender')
-        user.age = request.POST.get('age')
-        user.date_of_birth = request.POST.get('date_of_birth')
-        user.address = request.POST.get('address')
-        user.nationality = request.POST.get('nationality')
-        user.email = request.POST.get('email')
-        user.phone_number = request.POST.get('phone_number')
-        user.blood_group = request.POST.get('blood_group')
-        user.has_donated_before = request.POST.get('has_donated_before') == 'True'
-        user.appointment_date = request.POST.get('date')
-        user.appointment_time = request.POST.get('time')
-        user.emergency_contact_name = request.POST.get('emergency_contact_name')
-        user.emergency_contact_phone = request.POST.get('emergency_contact_phone')
-        user.save()
+        user = get_object_or_404(CustomUser, email=email)
 
-        messages.success(request, 'Information updated successfully!')
-        return redirect('hospital_dashboard')  # Redirect to the hospital dashboard or any other page
+        if user:
+            # Update user information based on the provided form data
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.gender = request.POST.get('gender')
+            user.age = request.POST.get('age')
+            user.date_of_birth = request.POST.get('date_of_birth')
+            user.address = request.POST.get('address')
+            user.nationality = request.POST.get('nationality')
+            user.email = request.POST.get('email')
+            user.phone_number = request.POST.get('phone_number')
+            user.blood_group = request.POST.get('blood_group')
+            user.has_donated_before = request.POST.get('has_donated_before') == 'True'
+            user.appointment_date = request.POST.get('date')
+            user.appointment_time = request.POST.get('time')
+            user.emergency_contact_name = request.POST.get('emergency_contact_name')
+            user.emergency_contact_phone = request.POST.get('emergency_contact_phone')
+            user.save()
+
+            messages.success(request, 'infoUpdate_success.html')
+            return redirect('hospital_dashboard')  # Redirect to the hospital dashboard or any other page
 
     return render(request, 'donorInformation.html')

@@ -84,7 +84,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    role= models.CharField(max_length=15,unique=True, null=True)
+    role= models.CharField(max_length=15, null=True)
     national_id = models.CharField(max_length=15,null=True, blank= True, unique=True)
     fullname = models.CharField(max_length=50, null=True, blank= True)
     first_name = models.CharField(max_length=100, null=True, blank= True)
